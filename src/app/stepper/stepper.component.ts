@@ -1,14 +1,26 @@
-import { Directive, Component, AfterContentInit, ContentChildren, Inject,
+import { Directive, Component, AfterContentInit, ContentChildren, ContentChild, Inject,
   QueryList, Input, ViewContainerRef, ViewChild, forwardRef, TemplateRef } from '@angular/core';
 
 
+
 @Directive({
-  selector: '[appStep]'
+  selector: '[appStepContent]'
 })
-export class StepDirective {
+export class StepContentDirective {
 
   constructor(
-    public templateRef: TemplateRef<any>,
+    public templateRef: TemplateRef<any>) {}
+
+}
+
+@Component({
+  selector: 'app-step',
+  template: ''
+})
+export class StepComponent {
+  @ContentChild(StepContentDirective) _content: StepContentDirective;
+
+  constructor(
     @Inject(forwardRef(() => StepperComponent)) private _stepper: StepperComponent) {}
 
 }
@@ -29,7 +41,7 @@ export class ContentPlaceholderDirective {
   styleUrls: ['./stepper.component.css']
 })
 export class StepperComponent implements AfterContentInit {
-  @ContentChildren(StepDirective) _steps: QueryList<StepDirective>;
+  @ContentChildren(StepComponent) _steps: QueryList<StepComponent>;
   @ViewChild(ContentPlaceholderDirective) _contentPlaceholder: ContentPlaceholderDirective;
 
   @Input() get selectedIndex() { return this._selectedIndex; }
@@ -56,7 +68,7 @@ export class StepperComponent implements AfterContentInit {
   private _renderSelected() {
     const current = this._steps.toArray()[this.selectedIndex];
     this._contentPlaceholder.viewContainer.clear();
-    this._contentPlaceholder.viewContainer.createEmbeddedView(current.templateRef, {}, 0);
+    this._contentPlaceholder.viewContainer.createEmbeddedView(current._content.templateRef, {}, 0);
   }
 
 }

@@ -1,14 +1,21 @@
 <app-stepper>
-    <div *appStep>Step 1
-        <button appStepperNext>next</button>
-    </div>
-    <div *appStep>
-        Step 2
-        <button appStepperPrevious>prev</button>
-        <button appStepperNext>next</button>
-    </div>
-    <div *appStep>
-        Step 3
-        <button appStepperPrevious>prev</button>
-    </div>
+    <app-step>
+        <div *appStepContent>
+            Step 1
+            <button appStepperNext>next</button>
+        </div>
+    </app-step>
+    <app-step>
+        <div *appStepContent>
+            Step 2
+            <button appStepperPrevious>prev</button>
+            <button appStepperNext>next</button>
+        </div>
+    </app-step>
+    <app-step>
+        <div *appStepContent>
+            Step 3
+            <button appStepperPrevious>prev</button>
+        </div>
+    </app-step>
 </app-stepper>
