@@ -1,5 +1,6 @@
 import { Directive, Component, AfterContentInit, ContentChildren, ContentChild, Inject,
-  QueryList, Input, ViewContainerRef, ViewChild, forwardRef, TemplateRef } from '@angular/core';
+  QueryList, Input, ViewContainerRef, ViewChild, forwardRef, TemplateRef, ViewEncapsulation,
+  HostBinding } from '@angular/core';
 
 
 
@@ -53,9 +54,11 @@ export class ContentPlaceholderDirective {
 @Component({
   selector: 'app-stepper',
   templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.css']
+  styleUrls: ['./stepper.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class StepperComponent implements AfterContentInit {
+  @HostBinding('class') className = 'vf-stepper';
   @ContentChildren(StepComponent) _steps: QueryList<StepComponent>;
   @ViewChild(ContentPlaceholderDirective) _contentPlaceholder: ContentPlaceholderDirective;
 

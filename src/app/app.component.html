@@ -2,23 +2,23 @@
     <app-step>
         <span *appStepLabel>Step 1</span>
         <div *appStepContent>
-            Step 1 content
-            <button appStepperNext>next</button>
+            <p>Step 1 content</p>
+            <button md-raised-button color="primary" md-button appStepperNext>next</button>
         </div>
     </app-step>
     <app-step>
         <span *appStepLabel>Step 2</span>
         <div *appStepContent>
-            Step 2 content
-            <button appStepperPrevious>prev</button>
-            <button appStepperNext>next</button>
+            <p>Step 2 content</p>
+            <button md-button appStepperPrevious>prev</button>
+            <button md-raised-button color="primary" appStepperNext>next</button>
         </div>
     </app-step>
     <app-step>
         <span *appStepLabel>Step 3</span>
         <div *appStepContent>
-            Step 3 content
-            <button appStepperPrevious>prev</button>
+            <p>Step 3 content</p>
+            <button md-button appStepperPrevious>prev</button>
         </div>
     </app-step>
 </app-stepper>

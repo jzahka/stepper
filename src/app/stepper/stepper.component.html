@@ -1,8 +1,11 @@
 <div fxLayout="row">
-    <div fxLayout="column">
-        <button *ngFor="let step of _steps" (click)="step.select()">
+    <div fxLayout="column" class="vf-stepper-label-container">
+        <div class="vf-stepper-label" [class.active]="selectedIndex === i"
+            *ngFor="let step of _steps; let i = index;" (click)="step.select()">
             <ng-container [ngTemplateOutlet]="step._label.templateRef"></ng-container>
-        </button>
+        </div>
     </div>
-    <ng-container appContentPlaceholder></ng-container>
+    <div class="vf-stepper-content">
+        <ng-container appContentPlaceholder></ng-container>
+    </div>
 </div>

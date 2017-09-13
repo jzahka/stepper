@@ -1,0 +1,17 @@
+@mixin vf-stepper-theme($theme) {
+  $primary: map-get($theme, primary);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  .vf-stepper {
+    .vf-stepper-label {
+      background-color: mat-color($primary, 700);
+      color: mat-contrast($primary, 700);
+
+      &.active {
+        background-color: mat-color($background, background);
+        color: mat-color($foreground, text);
+      }
+    }
+  }
+}
