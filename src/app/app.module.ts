@@ -5,7 +5,7 @@ import { MdListModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { StepperComponent, ContentPlaceholderDirective, HeaderPlaceholderDirective,
-  StepComponent, StepContentDirective } from './stepper/stepper.component';
+  StepComponent, StepContentDirective, StepLabelDirective } from './stepper/stepper.component';
 import { StepperNextDirective, StepperPreviousDirective } from './stepper-button.directive';
 
 @NgModule({
@@ -17,7 +17,8 @@ import { StepperNextDirective, StepperPreviousDirective } from './stepper-button
     StepperNextDirective,
     StepperPreviousDirective,
     ContentPlaceholderDirective,
-    HeaderPlaceholderDirective
+    HeaderPlaceholderDirective,
+    StepLabelDirective
   ],
   imports: [
     BrowserModule,

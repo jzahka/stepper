@@ -1,2 +1,8 @@
-<ng-container appHeaderPlaceholder></ng-container>
-<ng-container appContentPlaceholder></ng-container>
+<div fxLayout="row">
+    <div fxLayout="column">
+        <button *ngFor="let step of _steps" (click)="step.select()">
+            <ng-container [ngTemplateOutlet]="step._label.templateRef"></ng-container>
+        </button>
+    </div>
+    <ng-container appContentPlaceholder></ng-container>
+</div>

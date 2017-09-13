@@ -4,6 +4,16 @@ import { Directive, Component, AfterContentInit, ContentChildren, ContentChild, 
 
 
 @Directive({
+  selector: '[appStepLabel]'
+})
+export class StepLabelDirective {
+
+  constructor(
+    public templateRef: TemplateRef<any>) {}
+
+}
+
+@Directive({
   selector: '[appStepContent]'
 })
 export class StepContentDirective {
@@ -19,9 +29,14 @@ export class StepContentDirective {
 })
 export class StepComponent {
   @ContentChild(StepContentDirective) _content: StepContentDirective;
+  @ContentChild(StepLabelDirective) _label: StepContentDirective;
 
   constructor(
     @Inject(forwardRef(() => StepperComponent)) private _stepper: StepperComponent) {}
+
+  select() {
+    this._stepper.select(this);
+  }
 
 }
 
@@ -63,6 +78,10 @@ export class StepperComponent implements AfterContentInit {
 
   previous() {
     this.selectedIndex = Math.max(this.selectedIndex - 1, 0);
+  }
+
+  select(step: StepComponent) {
+    this.selectedIndex = this._steps.toArray().indexOf(step);
   }
 
   private _renderSelected() {
