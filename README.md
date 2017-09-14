@@ -1,5 +1,7 @@
 # Stepper
 
+Testing out a custom stepper component that dynamically renders steps. Similar to Angular Material tabs/stepper, but lazy renders content with each step.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.4.1.
 
 ## Development server
