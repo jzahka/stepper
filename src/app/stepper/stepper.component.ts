@@ -2,30 +2,11 @@ import { Directive, Component, AfterContentInit, ContentChildren, ContentChild, 
   QueryList, Input, ViewContainerRef, ViewChild, forwardRef, TemplateRef, ViewEncapsulation,
   HostBinding } from '@angular/core';
 
-
-
-@Directive({
-  selector: '[appStepLabel]'
-})
-export class StepLabelDirective {
-
-  constructor(
-    public templateRef: TemplateRef<any>) {}
-
-}
-
-@Directive({
-  selector: '[appStepContent]'
-})
-export class StepContentDirective {
-
-  constructor(
-    public templateRef: TemplateRef<any>) {}
-
-}
+import { StepLabelDirective } from './step-label.directive';
+import { StepContentDirective } from './step-content.directive';
 
 @Component({
-  selector: 'app-step',
+  selector: 'vf-step',
   template: ''
 })
 export class StepComponent {
@@ -33,6 +14,7 @@ export class StepComponent {
   @ContentChild(StepLabelDirective) _label: StepContentDirective;
 
   constructor(
+    // work around for circular dependency
     @Inject(forwardRef(() => StepperComponent)) private _stepper: StepperComponent) {}
 
   select() {
@@ -52,7 +34,7 @@ export class ContentPlaceholderDirective {
 }
 
 @Component({
-  selector: 'app-stepper',
+  selector: 'vf-stepper',
   templateUrl: './stepper.component.html',
   styleUrls: ['./stepper.component.scss'],
   encapsulation: ViewEncapsulation.None

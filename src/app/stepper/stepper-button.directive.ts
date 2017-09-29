@@ -1,8 +1,8 @@
 import { Directive, HostListener } from '@angular/core';
-import { StepperComponent } from './stepper/stepper.component';
+import { StepperComponent } from './stepper.component';
 
 @Directive({
-  selector: 'button[appStepperNext]'
+  selector: 'button[vfStepperNext]'
 })
 export class StepperNextDirective {
   @HostListener('click') click() {
@@ -14,7 +14,7 @@ export class StepperNextDirective {
 }
 
 @Directive({
-  selector: 'button[appStepperPrevious]'
+  selector: 'button[vfStepperPrevious]'
 })
 export class StepperPreviousDirective {
   @HostListener('click') click() {
